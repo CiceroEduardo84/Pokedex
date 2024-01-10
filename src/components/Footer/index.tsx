@@ -1,6 +1,6 @@
 import { Container } from "./style";
 
-export function Details() {
+export function Footer() {
   return (
     <Container>
       <h1>Details</h1>
