@@ -4,7 +4,8 @@ import { PokemonCard } from "../../components/PokemonCard";
 import { Link } from "react-router-dom";
 
 export function Home() {
-  const { data, isLoading, error } = useQueryPokemonPage();
+  const { data, isLoading, error, page, totalPage, nextPage, prevPage } =
+    useQueryPokemonPage();
 
   if (error) console.error(error);
 
@@ -23,6 +24,14 @@ export function Home() {
             </Link>
           );
         })}
+      </div>
+
+      <div className="paginationComponent">
+        <button onClick={prevPage}>&lt;Anterior</button>
+        <span>
+          {String(page).padStart(2, "0")} / {String(totalPage).padStart(2, "0")}
+        </span>
+        <button onClick={nextPage}>Próximo&gt;</button>
       </div>
     </Container>
   );
