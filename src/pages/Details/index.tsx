@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "./style";
 import { useQueryPokemonDetails } from "../../hooks/useQueryPokemonDetails";
 import { useEffect } from "react";
+import { CardType } from "../../components/CardType";
 
 export function Details() {
   const { name } = useParams();
@@ -36,6 +37,35 @@ export function Details() {
             <strong>
               #{data.id} {data.name}
             </strong>
+
+            <div className="sizePokemon">
+              <span>Height:{data.height}0cm</span>
+              <span>Weight:{data.weight}kg</span>
+            </div>
+
+            <div className="boxTypes">
+              {data.types.map((type) => {
+                return (
+                  <CardType
+                    key={type.type.name}
+                    type={type.type.name}
+                    size={16}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="boxStats">
+              {data.stats.map((status) => {
+                return (
+                  <div className="stats" key={status.stat.name}>
+                    <span className="statsName">{status.stat.name}</span>
+                    <progress value={status.base_stat} max={200} />
+                    <span className="statsValue">{status.base_stat}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
