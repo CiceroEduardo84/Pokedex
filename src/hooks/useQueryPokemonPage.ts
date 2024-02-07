@@ -9,7 +9,7 @@ export function useQueryPokemonPage() {
   const searchParams = useSearchParams();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(30);
-  const [totalPage, setTotalPages] = useState(1);
+  const [totalPage, setTotalPages] = useState(0);
 
   function nextPage() {
     setPage((prevValue) => prevValue + 1);
@@ -48,7 +48,21 @@ export function useQueryPokemonPage() {
   useEffect(() => {
     const pageQuery = Number(searchParams[0].get("page"));
     setPage(pageQuery || 1);
-  }, [searchParams]);
+
+    if (totalPage > 0) {
+      if (pageQuery > totalPage) {
+        navigate(`?page=${totalPage}`);
+        setPage(totalPage);
+        return;
+      }
+
+      if (pageQuery < 1) {
+        navigate(`?page=1`);
+        setPage(1);
+        return;
+      }
+    }
+  }, [searchParams, page, totalPage, navigate]);
 
   const query = useQuery({
     queryKey: ["getPokemonPage", page, limit],
