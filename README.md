@@ -57,5 +57,5 @@ $ git checkout -b nome-sobrenome
 
 ## Links
 
-- [Deploy](https://pokedex-mauve-tau.vercel.app/)
+- [Deploy](https://pokedex-eta-ebon.vercel.app/)
 - [PokeAPI](https://pokeapi.co/)
