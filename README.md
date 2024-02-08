@@ -26,7 +26,7 @@ este projeto tem como objetivo criar uma Pokédex interativa que permite visuali
 
 ```bash
 # Clone o repositório
-$ git clone https://github.com/EmanuelQuintino/Pokedex.git
+$ git clone https://github.com/CiceroEduardo84/Pokedex.git
 
 # Instale as dependências
 $ npm install
